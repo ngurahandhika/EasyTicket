@@ -1,0 +1,47 @@
+@import "tailwindcss";
+/* @import "tw-animate-css"; */
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 12px !important;
+}
+::-webkit-scrollbar-thumb {
+  width: 4px !important;
+  background: content-box rgba(92, 109, 125, 0.54);
+  border-radius: 16px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
+  border-image: initial;
+}
+
+section,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  scroll-margin-top: 100px;
+}
+
+::selection {
+  color: white;
+  background: oklch(35.9% 0.144 278.697);
+}
+
+body {
+  font-family: "DM Mono", monospace;
+}
+
+/* @layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+} */
