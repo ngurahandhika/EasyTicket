@@ -1,4 +1,4 @@
-Ini adalah projek Portfolio aku, dibuat dengan [Next.js](https://nextjs.org) dan [Tailwind CSS](https://tailwindcss.com/).
+Ini adalah projek PKL aku, dibuat dengan [Next.js](https://nextjs.org), [Tailwind CSS](https://tailwindcss.com/) dan [Shadcn/UI](https://ui.shadcn.com/).
 
 ## Running
 

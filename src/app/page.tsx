@@ -1,104 +1,186 @@
 "use client";
+
+import { Shield, Zap, Ticket, Headphones } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+import { Button } from "@/components/ui/button";
+import { TicketCard } from "@/components/layouts/ticket-cards";
+import { eventsData } from "@/lib/event-data";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        {/* <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        /> */}
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const router = useRouter();
+  const visibleEvents = eventsData.slice(0, 4);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {/* <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            /> */}
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const features = [
+    {
+      icon: Shield,
+      title: "Aman & Terpercaya",
+      description:
+        "Transaksi dijamin aman dengan sistem keamanan berlapis dan verifikasi tiket otomatis",
+    },
+    {
+      icon: Zap,
+      title: "Proses Cepat",
+      description:
+        "Beli tiket dalam hitungan detik, tanpa ribet, langsung dapat konfirmasi via email",
+    },
+    {
+      icon: Ticket,
+      title: "E-Ticket Instan",
+      description:
+        "Dapatkan tiket digital langsung setelah pembayaran berhasil, bisa disimpan di HP",
+    },
+    {
+      icon: Headphones,
+      title: "Support 24/7",
+      description:
+        "Tim customer service siap membantu kapan saja melalui WhatsApp dan email",
+    },
+  ];
+
+  return (
+    <main id="main-content" className="px-4 sm:px-6 lg:px-16 xl:px-32">
+      <section id="hero" className="relative overflow-hidden w-full">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+            <div className="space-y-3 sm:space-y-4 lg:space-y-6 z-10 order-2 lg:order-1">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight">
+                Temukan event{" "}
+                <span className="relative inline-block">
+                  <span className="relative z-10">terbaik</span>
+                  <svg
+                    className="absolute bottom-0 sm:bottom-1 left-0 w-full h-2 sm:h-3"
+                    viewBox="0 0 200 12"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      d="M0,6 Q25,0 50,6 T100,6 T150,6 T200,6"
+                      fill="none"
+                      stroke="#5d6ff8"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>{" "}
+                tanpa ribet
+              </h1>
+              <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-muted-foreground leading-relaxed">
+                Beli tiket konser, festival, dan acara seru lainnya dengan
+                mudah. Tanpa ribet, tanpa antre, dengan aman.
+              </p>
+              <div className="flex gap-3 sm:gap-4 pt-2">
+                <Button
+                  size="lg"
+                  className="px-4 sm:px-6 lg:px-8 py-4 sm:py-5 lg:py-6 text-sm sm:text-base lg:text-lg font-bold bg-primary hover:bg-primary/70"
+                  onClick={() => router.push("/events")}
+                >
+                  Lihat Event
+                </Button>
+              </div>
+            </div>
+
+            <div className="relative z-10 flex justify-center lg:justify-end order-1 lg:order-2">
+              <div className="relative w-full max-w-[280px] sm:max-w-xs md:max-w-sm lg:max-w-md">
+                <div className="relative rounded-lg shadow-2xl">
+                  <Image
+                    src="/konser.png"
+                    alt="Hero Image"
+                    width={400}
+                    height={400}
+                    className="w-full h-auto rounded-md"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      <section
+        id="events"
+        className="mt-32 pb-16 px-4 sm:px-6 lg:px-16 xl:px-32"
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-start mb-6 sm:mb-8">
+            <div>
+              <h1 className="text-3xl font-bold mb-3">Events</h1>
+              <p className="text-lg text-muted-foreground">
+                Jelajahi berbagai event menarik yang bisa Kamu hadiri dan beli
+                <br />
+                tiketnya sekarang juga!
+              </p>
+            </div>
+            <Button
+              size="lg"
+              variant="outline"
+              className="px-4 py-4 text-sm sm:text-base font-bold text-primary transition-colors hover:text-accent flex-shrink-0"
+              onClick={() => router.push("/events")}
+            >
+              Lihat Semua
+            </Button>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+            {visibleEvents.map((event) => (
+              <TicketCard key={event.id} event={event} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 sm:mb-12">
+            <h1 className="text-3xl font-bold mb-3 sm:mb-4">
+              Fitur Unggulan Kami
+            </h1>
+            <p className="text-lg text-muted-foreground">
+              Nikmati kemudahan jual beli tiket dengan fitur-fitur canggih dari
+              <br />
+              EasyTicket yang dirancang untuk kenyamanan Kamu.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <div
+                  key={index}
+                  className="group relative bg-card rounded-2xl p-6 sm:p-8 border border-border"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  <div className="relative">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-primary to-purple-600 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+                    </div>
+
+                    <h3 className="text-lg sm:text-xl font-bold mb-3 text-foreground">
+                      {feature.title}
+                    </h3>
+
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-12 sm:mt-16 text-center">
+            <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 rounded-full border border-primary/20">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <span className="text-sm font-medium text-foreground">
+                1,000+ Event telah terjual melalui platform kami
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
