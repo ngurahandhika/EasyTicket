@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Calendar, MapPin, Users } from "lucide-react";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
-import { Calendar, MapPin, Users } from "lucide-react";
+import { useEffect, useState } from "react";
 
 import { PaketTicket } from "@/components/layouts/paket-ticket";
-import { getEventById } from "@/lib/event-data";
 import type { Event } from "@/lib/event-data";
+import { getEventById } from "@/lib/event-data";
 
 export default function EventDetailsPage() {
   const params = useParams();
@@ -16,7 +16,7 @@ export default function EventDetailsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const id = parseInt(params.id as string);
+    const id = parseInt(params.id as string, 10);
     const foundEvent = getEventById(id);
 
     if (!foundEvent) {
